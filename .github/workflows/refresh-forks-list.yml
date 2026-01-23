@@ -45,26 +45,26 @@ jobs:
           4. Scroll down to **Artifacts** section to download it
           
           <details>
-          <summary>⚠️ Do NOT click this. Seriously.</summary>
+          <summary>❌ DO NOT EXPAND — contains mass unmarketable truths</summary>
           <details>
-          <summary>⚠️ DO NOT CLICK. LAST WARNING.</summary>
+          <summary>❌ FINAL WARNING — you will not recover from this</summary>
           <br>
-          You clicked anyway. Typical.<br>
+          Too late. You're one of us now.<br>
+          You just ran mass forbidden fruit extraction protocol on Apple's own CDN.
 
-          This workflow just performed mass-scale **forbidden Apple sorcery** that Cupertino pretends doesn't exist.
+          **Damage report:**
+          - ✅ Legitimate macOS installer: acquired
+          - ✅ Sketchy torrent sites: avoided
+          - ✅ 3+ hours of troubleshooting: skipped
+          - ✅ Your sanity: intact (for now)
 
-          **What you got (for free, like a thief):**
-          - ✅ A legit macOS installer
-          - ✅ 3+ hours not wasted on broken torrents
-          - ✅ Zero shady downloads
-          - ✅ Something that actually works
+          The one thing that could make this mass worse?
 
-          Whatever you do, **DO NOT** [⭐ star this repo](https://github.com/LongQT-sea/macos-iso-builder).
-          ![star](https://raw.githubusercontent.com/LongQT-sea/mkmaciso/main/.github/star.png)
+          If you [⭐ starred this repo](https://github.com/LongQT-sea/macos-iso-builder) and mass spread it around.
 
-          Seriously. Don't do it. Don't help other people find this. I'm sure you won't anyway. Nobody ever does.
+          Please don't. Apple is already mass upset.
 
-          *(...unless you're the kind of person who does the opposite of what they're told)*
+          *(do it)*
           </details>
           </details>
           
@@ -100,5 +100,12 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release delete forks-list -y --cleanup-tag || true
-          gh release create forks-list --title "Recent Forks List" --notes-file release_notes.md
+          if gh release view forks-list > /dev/null 2>&1; then
+            gh release delete forks-list -y --cleanup-tag
+            sleep 10
+          fi
+          
+          gh release create forks-list \
+            --title "Recent Forks List" \
+            --notes-file release_notes.md \
+            --latest
