@@ -9,8 +9,11 @@ This project has two parts:
 ## Before you start
 
 Check [Release page](https://github.com/LongQT-sea/mkmaciso/releases/tag/forks-list) first - someone might've already built what you need.
+> [!Important]
+> * Use the **"Build Recovery ISO image"** workflow unless you really need an offline installer.
+> * GitHub-hosted runners are a free public resource — please use them responsibly.
 
-## What images can you create?
+## About images format
 
 **ISO files** - These work great for VMs (Proxmox, QEMU, VirtualBox, VMware). Just attach them like a virtual DVD. They're hybrid UDF/HFS format, so they'll even mount in Windows if you need to poke around inside.
 
@@ -39,13 +42,13 @@ Lion, Mountain Lion, Mavericks, Yosemite, El Capitan, Sierra, High Sierra, Mojav
 3. Click the green **"I understand my workflows, go ahead and enable them"** button.
 4. Select a workflow from the left sidebar:
    * **Recovery ISO** - Small recovery image, builds in 2-5 minutes. Good for VMs.
-   * **Full Installer** - Complete offline installer, 5-18GB, takes 10-60 minutes to build.
+   * **Full Installer** - Complete offline installer, 5-18GB, takes 5-60 minutes to build.
 5. Click the **"Run workflow"** button and configure the workflow inputs:
 
    * **macOS version** – Choose a version (*Sequoia*, *Sonoma*, etc.).
    * **Image format** – Choose `iso` for virtual machines or `dmg` for bootable USB drives.
 6. Click the green **"Run workflow"** button to start the build, then wait for the workflow to complete.
-7. Once completed, reload the page and scroll down to the **Artifacts** section. Click the artifact link to start downloading (e.g., `macOS_Sequoia_15.7.3.iso`).
+7. Once completed, reload the page and scroll down to the **Artifacts** section. Click the artifact link to start downloading (e.g., `macOS_Sequoia_15.7.4.iso`).
 8. Unzip the downloaded artifact and you're done.
 
 ### Already have macOS? Run `mkmaciso` locally
