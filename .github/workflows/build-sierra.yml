@@ -1,13 +1,8 @@
-name: 11. Build macOS 10.12 Sierra
+name: 11. Build macOS Sierra
 
 on:
   workflow_dispatch:
     inputs:
-      macos_version:
-        required: true
-        type: choice
-        options:
-          - 'Sierra'
       image_format:
         description: 'Select image format: iso for virtual machines, dmg for flash to USB drive'
         required: true
@@ -15,6 +10,9 @@ on:
         options:
           - 'iso'
           - 'dmg'
+
+env:
+  MACOS_VERSION: 'Sierra'
 
 jobs:
   build-macos-image:
@@ -43,10 +41,10 @@ jobs:
         continue-on-error: true
         run: |
           if [ "${{ github.event.inputs.image_format }}" == "iso" ]; then
-            sudo bash mkmaciso "${{ github.event.inputs.macos_version }}" iso
+            sudo bash mkmaciso "${{ env.MACOS_VERSION }}" iso
             echo "image_name=$(basename *.iso)" >> $GITHUB_OUTPUT
           else
-            sudo bash mkmaciso "${{ github.event.inputs.macos_version }}" dmg
+            sudo bash mkmaciso "${{ env.MACOS_VERSION }}" dmg
             echo "image_name=$(basename *.dmg.img)" >> $GITHUB_OUTPUT
           fi
 
@@ -94,24 +92,23 @@ jobs:
             echo "<details>" >> $GITHUB_STEP_SUMMARY
             echo "<summary>⚠️ Do NOT click this. Seriously.</summary>" >> $GITHUB_STEP_SUMMARY
             echo "<details>" >> $GITHUB_STEP_SUMMARY
-            echo "<summary>⚠️ DO NOT CLICK. LAST WARNING.</summary>" >> $GITHUB_STEP_SUMMARY
+            echo "<summary>⚠️ Final warning. Close this. Walk away.</summary>" >> $GITHUB_STEP_SUMMARY
             echo "<br>" >> $GITHUB_STEP_SUMMARY
-            echo "You clicked anyway. Typical.<br>" >> $GITHUB_STEP_SUMMARY
+            echo "Of course you clicked. You were always going to click.<br>" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "This workflow just performed mass-scale **forbidden Apple sorcery** that Cupertino pretends doesn't exist." >> $GITHUB_STEP_SUMMARY
+            echo "This workflow just pulled a **legit macOS installer straight from Apple's servers** — no torrents, no sketchy mirrors." >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "**What you got (for free, like a thief):**" >> $GITHUB_STEP_SUMMARY
-            echo "- ✅ A legit macOS installer" >> $GITHUB_STEP_SUMMARY
-            echo "- ✅ 3+ hours not wasted on broken torrents" >> $GITHUB_STEP_SUMMARY
-            echo "- ✅ Zero shady downloads" >> $GITHUB_STEP_SUMMARY
-            echo "- ✅ Something that actually works" >> $GITHUB_STEP_SUMMARY
+            echo "**What just happened while you weren't looking:**" >> $GITHUB_STEP_SUMMARY
+            echo "- ✅ Downloaded directly from Apple — as legit as it gets" >> $GITHUB_STEP_SUMMARY
+            echo "- ✅ Saved you hours of hunting broken torrents" >> $GITHUB_STEP_SUMMARY
+            echo "- ✅ No shady third-party sites, no surprise executables" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "Whatever you do, **DO NOT** [⭐ star this repo](https://github.com/LongQT-sea/macos-iso-builder)." >> $GITHUB_STEP_SUMMARY
+            echo "Now whatever you do, **DO NOT** [⭐ star this repo](https://github.com/LongQT-sea/macos-iso-builder)." >> $GITHUB_STEP_SUMMARY
             echo "![star](https://raw.githubusercontent.com/LongQT-sea/mkmaciso/main/.github/star.png)" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "Seriously. Don't do it. Don't help other people find this. I'm sure you won't anyway. Nobody ever does." >> $GITHUB_STEP_SUMMARY
+            echo "Don't share it either. Last thing I need is more people finding something that actually works." >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "*(...unless you're the kind of person who does the opposite of what they're told)*" >> $GITHUB_STEP_SUMMARY
+            echo "*(...but if you're the type who does the opposite of what they're told — you know what to do)*" >> $GITHUB_STEP_SUMMARY
             echo "</details>" >> $GITHUB_STEP_SUMMARY
             echo "</details>" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
