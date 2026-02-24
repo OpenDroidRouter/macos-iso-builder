@@ -33,6 +33,7 @@ Lion, Mountain Lion, Mavericks, Yosemite, El Capitan, Sierra, High Sierra, Mojav
 > ![How to fork and run workflow](https://raw.githubusercontent.com/LongQT-sea/mkmaciso/main/.github/how_to_fork_and_run_workflow.gif)
 >
 > </details>
+
 > [!Important]
 > * Use **"Build Recovery ISO image"** workflow unless you really need an offline installer.
 > * GitHub-hosted runners are a free public resource — please use them responsibly.
